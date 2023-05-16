@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row justify-content-center">
+   <div class="col-6 grid-margin stretch-card">
+   <div class="card">
+       <div class="card-body">
+<h4>Modifier Ressource Materiel</h4>
+<div class="col-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <form class="forms-sample" #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+        <div class="form-group">
+          <label for="exampleInputName1">Nom</label>
+          <input ngModel [(ngModel)]="materialToUpdate.name" placeholder="Nom" name="name" type="text" class="form-control input-field" #name="ngModel" required [(ngModel)]="materialToUpdate.name">
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="text-danger">
+          Nom est obligatoire.
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="exampleSelectType">Type</label>
+          <select ngModel class="form-control" id="exampleSelectType" name="type" #type="ngModel" required [(ngModel)]="materialToUpdate.type">
+            <option value="" disabled selected>Selectionner type</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+        <div *ngIf="type.invalid && type.touched" class="text-danger">
+          Type is required.
+        </div>  
+        <br/>              
+        <div class="form-group">
+          <label for="exampleInputQuantite1">Quantite</label>
+          <input ngModel placeholder="Quantité" name="quantite" type="number" class="form-control input-field" #quantite="ngModel" required [(ngModel)]="materialToUpdate.quantite">
+        </div>
+        <div *ngIf="quantite.invalid && quantite.touched" class="text-danger">
+          Quantite is required.
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="exampleInputModele1">Modele</label>
+          <input ngModel placeholder="Modele" name="modele" type="text" class="form-control input-field" #modele="ngModel" required [(ngModel)]="materialToUpdate.modele">
+        </div>
+        <div *ngIf="modele.invalid && modele.touched" class="text-danger">
+          Modele is required.
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-2" [disabled]="!form.valid">Modifier resource materiel</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div></div></div></div></div>

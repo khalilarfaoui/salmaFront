@@ -1,0 +1,24 @@
+<h3 style="font-family: cursive; font-size: 18px; text-align: center;">La liste des Utilisateurs</h3>
+<hr>
+<table class="table table-bordered">
+  <thead class="table table-dark">
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="updateUser(user.uuid)">Modifier</button>&nbsp;
+        <button class="btn btn-danger" (click)="deleteUser(user.uuid)">Supprimer</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

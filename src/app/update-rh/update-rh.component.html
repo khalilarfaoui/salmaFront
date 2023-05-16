@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row justify-content-center">
+     <div class="col-6 grid-margin stretch-card">
+     <div class="card">
+         <div class="card-body">
+<h4>Modifier Ressource humaine</h4>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <form class="forms-sample" #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+                <div class="form-group">
+    <label for="exampleInputIdentifiant">Identifiant</label>
+    <input ngModel name="identifiant" [(ngModel)]="rhToUpdate.identifiant" type="text" class="form-control input-field" #identifiant="ngModel" required>
+</div>
+<div *ngIf="identifiant.invalid && identifiant.touched" class="text-danger">
+    L'identifiant est obligatoire.
+</div>
+<br/>
+<div class="form-group">
+    <label for="exampleInputNom">Nom</label>
+    <input ngModel name="nom" type="text" [(ngModel)]="rhToUpdate.nom" class="form-control input-field" #nom="ngModel" required>
+</div>
+<div *ngIf="nom.invalid && nom.touched" class="text-danger">
+    Le nom est obligatoire.
+</div>
+<br/>
+<div class="form-group">
+    <label for="exampleInputPrenom">Prénom</label>
+    <input ngModel name="prenom" [(ngModel)]="rhToUpdate.prenom" type="text" class="form-control input-field" #prenom="ngModel" required>
+</div>
+<div *ngIf="prenom.invalid && prenom.touched" class="text-danger">
+    Le prénom est obligatoire.
+</div>
+<br/>
+<div class="form-group">
+    <label for="exampleInputFonction">Fonction</label>
+    <input ngModel name="Fonction" [(ngModel)]="rhToUpdate.Fonction" type="text" class="form-control input-field" #Fonction="ngModel" required>
+</div>
+<div *ngIf="Fonction.invalid && Fonction.touched" class="text-danger">
+    La fonction est obligatoire.
+</div>
+<br/>
+<div class="form-group">
+    <label for="exampleInputVille">Ville</label>
+    <input ngModel name="Ville" [(ngModel)]="rhToUpdate.Ville" type="text" class="form-control input-field" #Ville="ngModel" required>
+</div>
+<div *ngIf="Ville.invalid && Ville.touched" class="text-danger">
+    La ville est obligatoire.
+</div>
+<br/>
+<div class="form-group">
+    <label for="exampleInputCIN">CIN</label>
+    <input ngModel name="CIN" [(ngModel)]="rhToUpdate.CIN" type="number" class="form-control input-field" #CIN="ngModel" required>
+</div>
+<div *ngIf="CIN.invalid && CIN.touched" class="text-danger">
+    Le numéro de carte d'identité est obligatoire.
+</div>
+
+  
+<button type="submit" class="btn btn-primary mt-2" [disabled]="!form.valid">Modifier</button>&nbsp;
+
+</form>
+</div>
+</div>
+</div>
+</div></div></div></div></div>

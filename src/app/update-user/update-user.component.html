@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row justify-content-center">
+     <div class="col-6 grid-margin stretch-card">
+     <div class="card">
+         <div class="card-body">
+<h4>Modifier Utilisateur</h4>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <form class="forms-sample" #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+                <input ngModel name="uuid" [(ngModel)]="userToUpdate.uuid" type="hidden" class="form-control input-field" #uuid="ngModel" required>
+               
+                <div class="form-group">
+                    <label for="exampleInputName1">Nom</label>
+                    <input ngModel name="name" placeholder="Nom" [(ngModel)]="userToUpdate.name" type="text" class="form-control input-field" #name="ngModel" required>
+                </div>
+                <div *ngIf="name.invalid && name.touched" class="text-danger">
+                    Nom est obligatoire.
+                  </div>
+                  <br/>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Email</label>
+                    <input ngModel name="email" [(ngModel)]="userToUpdate.email" type="email" class="form-control input-field" required
+                        #email="ngModel" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                </div>
+                <br/>
+                <div *ngIf="email.invalid && email.touched" class="text-danger">
+                    Mail est obligatoire et doit être une adresse email valide.
+                  </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Mot de passe</label>
+                    <input ngModel name="password" [(ngModel)]="userToUpdate.password" type="password" class="form-control" id="exampleInputPassword4" placeholder="Password"
+                    #password="ngModel" required>
+                </div>
+                <div *ngIf="password.invalid && password.touched" class="text-danger">
+                    Mot de passe est obligatoire.
+                  </div>
+                  <br/>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Confirmation mot de passe</label>
+                    <input ngModel name="confPassword" placeholder="Confirm Password" type="password" class="form-control input-field"
+                        #confPassword="ngModel" required>
+                </div>
+                <div *ngIf="confPassword.invalid && confPassword.touched" class="text-danger">
+                    Confirmation du mot de passe est obligatoire.
+                  </div>
+                  <div *ngIf="confPassword.value != password.value" class="text-danger">
+                    Les mots de passe ne correspondent pas.
+                  </div>
+                  <br/>
+                <div class="form-group">
+                    <label for="exampleSelectGender">Role</label>
+                    <select ngModel class="form-control" [(ngModel)]="userToUpdate.role" id="exampleSelectGender" name="role" #role="ngModel" required>
+                        <option value="" disabled selected>Selectionner Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="superviseur">Superviseur</option>
+                        <option value="chef">Chef travaux</option>
+                    </select>
+                </div>
+                <br/>
+                <div *ngIf="role.invalid && role.touched" class="text-danger">
+                    Role est obligatoire.
+                  </div>
+                <button type="submit" class="btn btn-primary mt-2" [disabled]="!form.valid">Modifier Utilisateur</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div></div></div></div></div>

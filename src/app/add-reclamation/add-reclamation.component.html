@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <h3 style="font-family: cursive; font-size: 18px; text-align: center;">Nouvelle réclamation</h3>
+            <hr>
+            <div class="row">
+              <div class="fg col-md-6">
+                <label for="inputDistrict4">District</label>
+                <input type="district" name="District" [(ngModel)]="rec.district" class="form-control" id="inputDistrict4" placeholder="District">
+              </div>
+              <div class="fg col-md-6">
+                <label for="inputDemandeur4">Demandeur</label>
+                <input type="demandeur" name="demandeur" [(ngModel)]="rec.demandeur" class="form-control" id="inputDemandeur4" placeholder="Demandeur">
+              </div>
+              <div class="fg col-md-6">
+                <label for="inputAddress">Adresse</label>
+                <input type="text" name="adresse" [(ngModel)]="rec.adresse" class="form-control" id="inputAddress" placeholder="Adresse">
+              </div>
+  
+              <div class="fg col-md-6">
+                <label for="inputTelephone">Telephone</label>
+                <input type="text" name="telephone" [(ngModel)]="rec.telephone" class="form-control" id="inputTelephone">
+              </div>
+              <div class="fg col-md-6">
+                <label for="inputDemande">Demande</label>
+                <select id="inputDemande" name="demande" [(ngModel)]="rec.demande" class="form-control">
+                  <option selected>Choose...</option>
+                  <option value="one">one</option>
+                </select>
+              </div>
+            
+              <div class="fg col-md-6">
+                <label for="inputDate">Date</label>
+                <input type="date" name="dateRecalamtion" [(ngModel)]="rec.dateRecalamtion" class="form-control" id="date">
+              </div>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-outline-success" (click)="add()">Valider</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<h4>Les Réclamations</h4><br />
+<table class="table table-bordered">
+  <thead>
+    <tr>
+
+      <th>District</th>
+      <th>Demandeur</th>
+      <th>Adresse</th>
+      <th>Telephone</th>
+      <th>Demande</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of  reclamtionAll">
+        <td>{{ r.district }}</td>
+        <td>{{ r.demandeur }}</td>
+        <td>{{ r.adresse }}</td>
+        <td>{{ r.telephone }}</td>
+        <td>{{ r.demande }}</td>
+        <td>{{ r.dateReclamation | date: 'dd/MM/yyyy' }}</td>
+      </tr>
+  </tbody>
+</table>

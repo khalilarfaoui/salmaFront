@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row justify-content-center">
+            <div class="card" style="margin-left: auto; margin-right: auto;">
+                <div class="card-body">
+                    <h3>Ajouter un Utilisateur</h3>
+                    <div class="col-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="forms-sample" #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">Nom</label>
+                                        <input ngModel name="name" placeholder="Nom" type="text"
+                                            class="form-control input-field" #name="ngModel" required>
+                                    </div>
+                                    <div *ngIf="name.invalid && name.touched" class="text-danger">
+                                        Nom est obligatoire.
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Email</label>
+                                        <input ngModel name="email" type="email" class="form-control input-field"
+                                            placeholder="Email" required #email="ngModel"
+                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                    </div>
+                                    <div *ngIf="email.invalid && email.touched" class="text-danger">
+                                        Email est obligatoire et doit être une adresse email valide.
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Mot de passe</label>
+                                        <input ngModel name="password" type="password" class="form-control"
+                                            id="exampleInputPassword4" placeholder="Mot de passe" #password="ngModel"
+                                            required>
+                                    </div>
+                                    <div *ngIf="password.invalid && password.touched" class="text-danger">
+                                        Mot de passe est obligatoire.
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Confirmer mot de passe</label>
+                                        <input ngModel name="confPassword" placeholder="Confirmation mot de passe"
+                                            type="password" class="form-control input-field" #confPassword="ngModel"
+                                            required>
+                                    </div>
+                                    <div *ngIf="confPassword.invalid && confPassword.touched" class="text-danger">
+                                        Confirmation du mot de passe est obligatoire.
+                                    </div>
+                                    <div *ngIf="confPassword.value != password.value" class="text-danger">
+                                        Les mots de passe ne correspondent pas.
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="exampleSelectGender">Role</label>
+                                        <select ngModel class="form-control" id="exampleSelectGender" name="role"
+                                            #role="ngModel" required>
+                                            <option value="" disabled selected>Selectionner Role</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="superviseur">Superviseur</option>
+                                            <option value="chef">Chef travaux</option>
+                                        </select>
+                                    </div>
+                                    <br />
+                                    <div *ngIf="role.invalid && role.touched" class="text-danger">
+                                        Role est obligatoire.
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-2"
+                                        [disabled]="!form.valid">Ajouter</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,163 @@
+<div *ngIf="loggedIn$">
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+  </head>
+
+  <body>
+    
+    <div class="container-scroller">
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logg1.png" alt="logo" style="width: 300%;" style="height: 200%;"  /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/miini.jpg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+
+          <ul class="navbar-nav navbar-nav-right">
+            <a class="dropdown-item font-weight-bold" href="/" (click)="Signout()">
+              <i class="mdi mdi-logout me-2 text-primary "></i> Se déconnecter </a>
+            
+          </ul>
+          
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+              <a href="#" class="nav-link">
+                <div class="nav-profile-image">
+                  <img src="assets/images/faces/user.png" alt="profile">
+                  <span class="login-status online"></span>
+                  <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                  <span class="font-weight-bold mb-2">{{connectedUserInformations.name}}</span>
+                  <span class="text-secondary text-small">{{connectedUserInformations.role}}</span>
+                </div>
+                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="connectedUserInformations.role == 'admin'">
+              <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Gestion Utilisateurs</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="general-pages">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" routerLink="add-user"> Ajouter un Utilisateur </a></li>
+                  <li class="nav-item"> <a class="nav-link" routerLink="user-list"> Liste Utilisateurs </a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item" *ngIf="connectedUserInformations.role == 'superviseur'">
+              <a class="nav-link" data-bs-toggle="collapse" href="#general-pages1" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Ressources Humaines</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="general-pages1">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" routerLink="add-rh"> Ajouter Ressource humaine </a></li>
+                  <li class="nav-item"> <a class="nav-link" routerLink="rh-lists"> Liste Ressources humaines </a></li>
+                </ul>
+              </div> 
+            </li> 
+            <li class="nav-item" *ngIf="connectedUserInformations.role == 'superviseur'">
+              <a class="nav-link" data-bs-toggle="collapse" href="#general-pages2" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Ressources Materiels</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="general-pages2">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" routerLink="add-material"> Ajouter un Materiel </a></li>
+                  <li class="nav-item"> <a class="nav-link" routerLink="materials-lists"> Liste des Materiels </a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item" *ngIf="connectedUserInformations.role == 'superviseur'">
+              <a class="nav-link" data-bs-toggle="collapse" href="#general-pages3" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Les équipes </span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="general-pages3">
+                <ul class="nav flex-column sub-menu">
+                  
+                  <li class="nav-item"> <a class="nav-link" routerLink="add-equipe/"> Ajouter une équipe </a></li>
+                  <li class="nav-item"> <a class="nav-link" routerLink="equipe-liste/"> Liste équipe </a></li>
+                </ul>
+              </div> 
+            </li>
+            <li class="nav-item" *ngIf="connectedUserInformations.role == 'superviseur'">
+              <a class="nav-link" data-bs-toggle="collapse" href="#general-pages4" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Réclamations </span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="general-pages4">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" routerLink="add-reclamation/"> Saisir Réclamation </a></li>
+                </ul>
+              </div> 
+            </li>
+            <li class="nav-item" *ngIf="connectedUserInformations.role == 'chef'">
+              <a class="nav-link" data-bs-toggle="collapse" href="#general-pages1" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Calendrier </span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="general-pages1">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" routerLink="agenda/"> Calendrier </a></li>
+                </ul>
+              </div> 
+            </li>
+            <li class="nav-item" *ngIf="connectedUserInformations.role == 'chef'">
+              <a class="nav-link" data-bs-toggle="collapse" href="#general-pages2" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Intervention </span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="general-pages2">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" routerLink="intervention/"> Intervention </a></li>
+                </ul>
+              </div> 
+            </li>
+            <li class="nav-item" *ngIf="connectedUserInformations.role == 'chef'">
+              <a class="nav-link" data-bs-toggle="collapse" href="#general-pages3" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Suivi & clôture</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="general-pages3">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" routerLink="recherche-interv/"> Suivre une intervention</a></li>
+                  <li class="nav-item"> <a class="nav-link" routerLink="suivi-mail/"> Clôturer</a></li>
+                </ul>
+              </div> 
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+</div>
+<app-login *ngIf="!loggedIn$"></app-login>

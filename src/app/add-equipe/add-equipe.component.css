@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    height: 30vh;
+  }
+  
+  .card {
+    width: 200%;
+  }
+  
